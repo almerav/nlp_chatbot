@@ -3,16 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NLP Chatbot</title>
-    <link rel="stylesheet" href="/static/nlp_chatbot.css">
+    <title>Chatbot Interface</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='nlp_chatbot.css') }}">
+    <!-- Firebase App (the core Firebase SDK) -->
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js"></script>
+    <!-- Firebase Firestore -->
+    <script type="module" src="https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js"></script>
+    <!-- Your Firebase Configuration -->
+    <script type="module" src="{{ url_for('static', filename='firebase-config.js') }}"></script>
 </head>
 <body>
-    <div class="container">
-        <h2>NLP Chatbot</h2>
-        <div id="chatbox" class="chatbox"></div>
-        <textarea id="userInput" placeholder="Type your message here..."></textarea>
-        <button onclick="sendMessage()">Send</button>
+    <nav>
+        <div class="navbar">
+            <div class="logo">FeasTapp</div>
+        </div>
+    </nav>
+
+    <div class="chat-container">
+        <div class="chat-area">
+            <img src="{{ url_for('static', filename='img/gemini.png') }}" class="chat-logo">
+            <p class="welcome-message"><b>What's in your kitchen? Let's find a recipe!</b></p>
+            <div class="chat-messages" id="chat-box"></div>
+            <button id="get-started-btn">Let's get started</button>
+            <div class="button-options" id="button-options" style="display: none;"></div>
+            <div class="message-box" id="message-box" style="display: none;">
+                <input type="text" id="user-input" placeholder="Enter your ingredients here...">
+                <button id="send-btn">Send</button>
+            </div>
+        </div>
     </div>
-    <script src="/static/nlp_chatbot.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="module" src="{{ url_for('static', filename='nlp_chatbot.js') }}"></script>
 </body>
 </html>
