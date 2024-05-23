@@ -24,7 +24,7 @@ sessions = {}
 
 @app.route('/')
 def root():
-    return render_template('/nlp_chatbot.html')
+    return render_template('nlp_chatbot.html')
 
 @app.route('/send_message', methods=['POST'])
 def send_message():
@@ -101,7 +101,7 @@ def send_message():
                 dish_name = user_message
                 response = chat.send_message(f"Give details for the {sessions[session_id]['cuisine']} dish named {dish_name}. Include nutritional information, common allergens, and possible substitutions.")
                 response_text = format_dish_details(response.text)
-                buttons = ["Save Recipe", "Ask for Recommendation"]
+                buttons = ["Ask for Recommendation"]
                 sessions[session_id]['state'] = 'ask_cuisine'
                 show_buttons = True
 
