@@ -23,7 +23,7 @@ nltk.download('averaged_perceptron_tagger')  # Download POS tagger data
 sessions = {}
 
 @app.route('/')
-def root():
+def home():
     return render_template('nlp_chatbot.html')
 
 @app.route('/send_message', methods=['POST'])
